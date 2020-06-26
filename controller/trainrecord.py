@@ -1,10 +1,11 @@
 
 import pyaudio
 import wave
-import os.path
+import os
 
-test = "../test_data"
-train = "../training_data"
+
+test =  os.getcwd() + "\\test_data"
+train = os.getcwd() + "\\training_data"
 
 
 def testr(x, type ,RECORD_SECONDS = 10):

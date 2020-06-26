@@ -5,13 +5,14 @@ import scipy.io.wavfile as wav
 from sklearn.mixture import GaussianMixture
 import pickle
 import warnings
-from controller import mfeatures
+import os
+import mfeatures
 
 warnings.filterwarnings("ignore")
 
 
 def traine(x):
-    file_paths=open("roll_path.txt", 'w')
+    file_paths=open("controller/roll_path.txt", 'w')
     i=1
     while i<6:
         file_paths.write(x+str(i)+".wav\n")
@@ -19,10 +20,10 @@ def traine(x):
     file_paths.close()
      
     #path to training data
-    source   = r"../training_data/"
+    source   = "training_data/"
     #path where training speakers will be saved
-    dest = r"../models/"
-    train_file = "roll_path.txt"
+    dest = "models/"
+    train_file = "controller/roll_path.txt"
     file_paths = open(train_file,'r')
     
     count = 1

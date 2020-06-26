@@ -3,8 +3,10 @@ import numpy as np
 import scipy.io.wavfile as wav
 import pickle
 import os
+import sys
+import mfeatures
 # from controller import mfeatures
-from controller import mfeatures
+# from controller import mfeatures
 import warnings
 
 warnings.filterwarnings("ignore")
@@ -51,9 +53,9 @@ def record():
     wf.close()
 
 
-def test1(path):
+def test1():
 
-    modelpath = "../models/"
+    modelpath = os.getcwd()+'\\models'
 
     gmm_files = [os.path.join(modelpath, fname) for fname in
                  os.listdir(modelpath) if fname.endswith('.gmm')]
@@ -64,7 +66,7 @@ def test1(path):
                 in gmm_files]
 
 
-    # path = "testfile.wav"
+    path = "controller/testfile.wav"
     # rate,sig = wav.read(source+path)
     rate, sig = wav.read(path)
     mfcc_feat = mfeatures.extract_features(sig, rate)

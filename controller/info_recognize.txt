@@ -1,6 +1,3 @@
-hung 0
-huy 0
-manh 0
 manh 0
 hung 0
 huy 0

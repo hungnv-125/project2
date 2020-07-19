@@ -1,5 +1,10 @@
-from controller.trainrecord import *
-from controller.GMM1 import *
+
+
+import os
+import sys
+sys.path.append(os.getcwd()+'\\controller')
+from GMM1 import *
+# from trainrecord import *
 # print("Please enter your name: ")
 # name = input();
 #
@@ -7,7 +12,7 @@ from controller.GMM1 import *
 # recordTrain(name);
 
 print("Training........")
-traine("nguyen_ba_thanh")
+traine("le_quoc_phong")
 print("Train done!!!")
 
 

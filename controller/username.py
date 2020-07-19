@@ -53,9 +53,10 @@ def record():
     wf.close()
 
 
-def test1():
+def test1(path):
 
-    modelpath = os.getcwd()+'\\models'
+    modelpath = 'C:\\Users\\Van_Hung\\PycharmProjects\\SpeakerRecognition\\models'
+    # modelpath= '..\\models\\'
 
     gmm_files = [os.path.join(modelpath, fname) for fname in
                  os.listdir(modelpath) if fname.endswith('.gmm')]
@@ -66,27 +67,31 @@ def test1():
                 in gmm_files]
 
 
-    path = "controller/testfile.wav"
+    # path = "controller/testfile.wav"
     # rate,sig = wav.read(source+path)
     rate, sig = wav.read(path)
     mfcc_feat = mfeatures.extract_features(sig, rate)
-
     log_likelihood = np.zeros(len(models))
 
     for i in range(len(models)):
         gmm = models[i]  # checking with each model one by one
         scores = np.array(gmm.score(mfcc_feat))
-        log_likelihood[i] = scores.sum()
+        # scores = np.array(gmm.score_samples(mfcc_feat))
+        # print(scores)
+        log_likelihood[i] = scores
+        # print(log_likelihood[i])
+        # print("----------")
         #print(speakers[i] + str(log_likelihood[i]))
     winner = np.argmax(log_likelihood)
+    print(log_likelihood[winner])
     z = speakers[winner]
     length = len(z)
-    i = 0
-    while i < length:
-        y = z[i]
-        if y.isdigit():
-            break
-        i += 1
-    result = z[z.rfind('/')+1:i]
+    # i = 0
+    # while i < length:
+    #     y = z[i]
+    #     if y.isdigit():
+    #         break
+    #     i += 1
+    result = z[z.rfind('/')+1:length]
     # result = result.upper()
     return result

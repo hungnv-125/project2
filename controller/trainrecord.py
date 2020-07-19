@@ -4,8 +4,8 @@ import wave
 import os
 
 
-test =  os.getcwd() + "\\test_data"
-train = os.getcwd() + "\\training_data"
+test =  os.getcwd() + "\\test_data\\"
+train = os.getcwd() + "\\training_data\\"
 
 
 def testr(x, type ,RECORD_SECONDS = 10):
@@ -69,7 +69,7 @@ def recordTest(name):
     print("Done!!!")
 
 
-# recordTrain();
-# recordTest();
+recordTrain("le_quoc_phong");
+recordTest("le_quoc_phong");
 
 
